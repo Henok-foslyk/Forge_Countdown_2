@@ -2,32 +2,46 @@ import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
+import BlueButton from './components/BlueButton.jsx'
+import Card from './components/Card.jsx'
 
 function App() {
   const [count, setCount] = useState(0)
 
+  const increaseCount = () => {
+    setCount(count + 1)
+  }
+
+  const decreaseCount = () => {
+    setCount(count - 1)
+  }
+
+  // below wont work
+  var wrongCount = 0
+
+  // functions that try to change without useState and setter
+  const increaseWrongCount = () => {
+    wrongCount = wrongCount + 1
+  }
+
+  const decreaseWrongCount = () => {
+    wrongCount = wrongCount - 1
+  }
+
+
   return (
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <Card title="Card Title" ></Card>
+      <BlueButton />
+      
+      <h1>Count: { count }</h1>
+      <button onClick={() => increaseCount()} > increase </button>
+      <button onClick={ () => decreaseCount()} > decrease </button>
+
+      <h1>Test: {wrongCount} </h1>
+      {/* clicking these will do nothing :( */}
+      <button onClick={() => increaseWrongCount()} > increase </button>
+      <button onClick={() => decreaseWrongCount()} > decrease </button>
     </>
   )
 }
