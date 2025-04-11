@@ -1,0 +1,8 @@
+.outer-box {
+	margin: 8px;
+	border: 2px #000000 solid;
+	padding: 8px;
+    align-items: center;
+	width: 100%;
+	background-color: #fffea9;
+}
